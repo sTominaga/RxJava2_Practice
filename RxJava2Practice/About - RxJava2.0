@@ -1,0 +1,53 @@
+/*-------------------------------------------
+  RxJava2.0について調べたことをまとめ
+-------------------------------------------*/
+
+Rxjava2.0
+1.0と異なり、Reactive Streamsとの依存があるとのこと
+
+
+Flowable( ) <- Reactive Streamsに対応
+
+●FlowableEmitterインターフェイス
+通知メソッド(onNext、onErrorとか)内部で購読が解除されたか確認している
+そのため、RxJava1.xの通知メソッドと異なり、購読が解除されている状態で
+通知メソッドを読んでもSubscriberに通知がいかないようになっている
+
+＊通知がいかないだけで、処理自体は行われるので
+それの対応は実装者に委ねられている
+
+
+●subscribeメソッドがExceptionをthrowするように
+これにより処理中に例外をcatchする必要がなくなり、発生した例外は
+Flowable内部の呼び出し元でcatchされ、致命的なエラーでない限りはSubscriberに
+エラーの通知を行うようになっている
+
+
+●onNextメソッドにnullが渡せない（ぬるぽになる）
+
+
+@Override
+public void subscribe(FlowableEmitter<String> e) throws Exception {
+    String[] datas = {"Hello, World!", "こんにちは、世界!"};
+
+        for (String data : datas) {
+            //購読解除されている場合は処理をやめる
+            if (e.isCancelled()) {
+                return;
+            }
+            //データを通知する
+            e.onNext(data);
+        }
+
+        //完了したことを通知する
+        e.onComplete();
+    }
+
+    * FlowableEmitter
+    * 通知メソッド(onNext, onError, onComplete)の内部で購読が解除されたか確認している
+    * そのため、購読が解除されている状態でonNextメソッドなどの通知メソッドを読んでも、
+    * Subscriberに通知が行われないようになっている(->RxJava1.xとの違い）
+    *
+    * 以下のようなメソッドもある
+    * ・setCancellable() - 購読が解除された際に指定した処理を行う
+    * ・setDisposable()  - 他のDisposableを設定してまとめて購読解除する

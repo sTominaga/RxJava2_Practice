@@ -76,7 +76,7 @@ public class SubscriberTestActivity extends AppCompatActivity{
         flowable
             //Subscriberの処理を別スレッドで行うようにする
             .observeOn(Schedulers.computation())
-        //購読する
+            //購読する
             .subscribe(new Subscriber<String>() {
 
              /* データ数のリクエスト、購読の解除を行うオブジェクト */
@@ -110,7 +110,7 @@ public class SubscriberTestActivity extends AppCompatActivity{
                     String threadName = Thread.currentThread().getName();
 
                     //取得したデータをLogで出力する
-                    Log.d("ResourceSubscriberActivity", threadName+":"+s);
+                    Log.d("Subscriber", threadName+":"+s);
 
                     //次に受け取るデータ数をリクエストする
                     subscription.request(1L);
@@ -127,7 +127,7 @@ public class SubscriberTestActivity extends AppCompatActivity{
                 public void onComplete() {
                     //実行しているスレッド名の取得
                     String threadName = Thread.currentThread().getName();
-                    Log.d("ResourceSubscriberActivity", threadName+":完了しました");
+                    Log.d("Subscriber", threadName+":完了しました");
                 }
             });
     }

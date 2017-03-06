@@ -1,12 +1,20 @@
 /*-------------------------------------------
-  RxJava2.0について調べたことをまとめ
+  RxJava2.0について調べたことをまとめておく
 -------------------------------------------*/
 
 Rxjava2.0
 1.0と異なり、Reactive Streamsとの依存があるとのこと
 
+　　　　　　　　　　　          生産者       消費者
+Reactive Streams 対応有り |  Flowable  | Subscriber
+Reactive Streams 対応なし | Observable | Observer
 
-Flowable( ) <- Reactive Streamsに対応
+Reactive Streamsの4つのプロトコル
+・onSubscribe : 通知の準備ができたことの通知
+・onNext      : データの通知
+・onError     : エラー(異常終了)の通知
+・onComplete  : 完了(正常終了)の通知
+
 
 ●FlowableEmitterインターフェイス
 通知メソッド(onNext、onErrorとか)内部で購読が解除されたか確認している

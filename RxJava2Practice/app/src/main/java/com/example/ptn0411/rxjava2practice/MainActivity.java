@@ -31,11 +31,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * FlowableEmitter
+     * 通知メソッド(onNext, onError, onComplete)の内部で購読が解除されたか確認している
+     * そのため、購読が解除されている状態でonNextメソッドなどの通知メソッドを読んでも、
+     * Subscriberに通知が行われないようになっている(->RxJava1.xとの違い）
+     */
     private void startReactiveStreams() {
         Flowable<String> flowable = Flowable.create(new FlowableOnSubscribe<String>() {
             @Override
             public void subscribe(FlowableEmitter<String> e) throws Exception {
-                String[] datas = {"Hello, World!", "こんにちは、世界!"};
+                String[] datas = {"Hello, World!", "こんにちは、世界!", "aiueo", "あいうえお", "ppp", "ss"};
 
                 for (String data : datas) {
                     //購読解除されている場合は処理をやめる
@@ -49,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
                 //完了したことを通知する
                 e.onComplete();
             }
+        /*---------------------------------------------
+          Flawable.create()の第二引数
+          BackpressureStrategy.BUFFER
+           - 生成されたデータを通知するまで全て貯めておく
+          BackpressureStrategy.DROP
+           - 通知待ちとなったデータを破棄する
+          BackpressureStrategy.LATEST
+           - 全てではなく、最新のデータのみ保持する
+         ---------------------------------------------*/
             //超過したデータはバッファする
         }, BackpressureStrategy.BUFFER);
 
@@ -77,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         //実行しているスレッド名を取得する
                         String threadName = Thread.currentThread().getName();
 
-                        //⬆︎で取得したデータをLogで出力する
+                        //取得したデータをLogで出力する
                         Log.d("MainActivity", threadName+":"+s);
 
                         //次に受け取るデータ数をリクエストする

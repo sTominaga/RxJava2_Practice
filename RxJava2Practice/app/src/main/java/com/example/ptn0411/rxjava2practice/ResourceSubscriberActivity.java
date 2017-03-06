@@ -90,7 +90,6 @@ public class ResourceSubscriberActivity extends AppCompatActivity {
                 //Subscriberの処理を別スレッドで行うようにする
                 .observeOn(Schedulers.computation())
                 //購読する
-//                .subscribe(new Subscriber<String>() {
                 .subscribe(new ResourceSubscriber<String>() {
 
                     /* 購読の開始時間 */
@@ -108,11 +107,11 @@ public class ResourceSubscriberActivity extends AppCompatActivity {
                     //データを受け取った際の処理
                     @Override
                     public void onNext(String s) {
-                        Log.d("ResourceSubscriberActivity", "onNext called");
+                        Log.d("ResourceSubscriber", "onNext called");
                         //購読開始から500ミリ秒を過ぎた場合は購読を解除する
                         if ((System.currentTimeMillis() - startTime) > 500L) {
                             dispose(); //購読を解除する
-                            Log.d("ResourceSubscriberActivity", "購読解除しました");
+                            Log.d("ResourceSubscriber", "購読解除しました");
                             return;
                         }
 
@@ -123,7 +122,7 @@ public class ResourceSubscriberActivity extends AppCompatActivity {
                         }
 
                         String threadName = Thread.currentThread().getName();
-                        Log.d("ResourceSubscriberActivity", threadName+":完了しました:"+ s);
+                        Log.d("ResourceSubscriber", threadName+":完了しました:"+ s);
                     }
 
                     @Override

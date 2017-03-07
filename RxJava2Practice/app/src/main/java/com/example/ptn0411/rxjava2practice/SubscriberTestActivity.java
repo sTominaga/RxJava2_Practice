@@ -38,7 +38,7 @@ public class SubscriberTestActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.subscriber_test);
 
         Button button = (Button)findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {

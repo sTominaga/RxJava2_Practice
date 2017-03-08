@@ -5,7 +5,6 @@
 Rxjava2.0
 1.0と異なり、Reactive Streamsとの依存があるとのこと
 
-　　　　　　　　　　　          生産者       消費者
 Reactive Streams 対応有り |  Flowable  | Subscriber
 Reactive Streams 対応なし | Observable | Observer
 

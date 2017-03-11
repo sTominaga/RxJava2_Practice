@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+        <data>
+                <variable
+                    name="user"
+                    type="com.example.ptn0411.rxjava2practice.User"/>
+        </data>
 
-        <TextView
+
+        <LinearLayout
+            android:id="@+id/activity_main"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textSize="25sp"
-            tools:text="Test"/>
+            android:layout_height="match_parent">
 
-</LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{user.name}"
+                    tools:text="name"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{user.company}"
+                    tools:text="Company"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{user.email}"
+                    tools:text="Email"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{user.bio}"
+                    tools:text="Bio"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{user.created_at}"
+                    tools:text="Created_at"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{user.updated_at}"
+                    tools:text="Updated_at"/>
+
+        </LinearLayout>
+
+</layout>

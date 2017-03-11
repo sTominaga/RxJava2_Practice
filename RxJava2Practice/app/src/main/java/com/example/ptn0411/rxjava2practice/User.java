@@ -29,4 +29,23 @@ public class User {
         return this.name;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
 }

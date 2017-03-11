@@ -14,6 +14,4 @@ public class GithubReposModel {
      * APIからデータを取得したりする
      */
 
-
-
 }

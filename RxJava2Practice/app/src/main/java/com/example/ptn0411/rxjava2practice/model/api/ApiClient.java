@@ -1,4 +1,4 @@
-package com.example.ptn0411.rxjava2practice;
+package com.example.ptn0411.rxjava2practice.model.api;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,9 +12,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by ptn0411 on 2017/03/13.
  */
 
-class ApiClient {
+public class ApiClient {
 
-    static Retrofit create() {
+    public static Retrofit create() {
 
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
 

@@ -1,4 +1,6 @@
-package com.example.ptn0411.rxjava2practice;
+package com.example.ptn0411.rxjava2practice.model.api;
+
+import com.example.ptn0411.rxjava2practice.UserEntity;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -10,5 +12,5 @@ import retrofit2.http.Path;
 
 public interface GitHubService {
     @GET("users/{username}")
-    Call<User> getUser(@Path("username") String user);
+    Call<UserEntity> getUser(@Path("username") String user);
 }

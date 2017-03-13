@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
         <data>
                 <variable
-                    name="user"
-                    type="com.example.ptn0411.rxjava2practice.User"/>
+                    name="viewModel"
+                    type="com.example.ptn0411.rxjava2practice.viewmodel.MainViewModel"/>
         </data>
-
 
         <LinearLayout
             android:id="@+id/activity_main"
@@ -19,43 +18,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textSize="25sp"
-                    android:text="@{user.name}"
-                    tools:text="name"/>
+                    android:text="TEXT"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textSize="25sp"
-                    android:text="@{user.company}"
-                    tools:text="Company"/>
+                    android:text="@{viewModel.name}"/>
+
+                <TextView
+                    android:id="@+id/company"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25sp"
+                    android:text="@{viewModel.company}"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textSize="25sp"
-                    android:text="@{user.email}"
-                    tools:text="Email"/>
+                    android:text="@{viewModel.email}"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textSize="25sp"
-                    android:text="@{user.bio}"
-                    tools:text="Bio"/>
+                    android:text="@{viewModel.bio}"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textSize="25sp"
-                    android:text="@{user.created_at}"
-                    tools:text="Created_at"/>
+                    android:text="@{viewModel.created_at}"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:textSize="25sp"
-                    android:text="@{user.updated_at}"
-                    tools:text="Updated_at"/>
+                    android:text="@{viewModel.updated_at}"/>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
 
         </LinearLayout>
 
